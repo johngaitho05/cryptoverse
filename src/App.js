@@ -2,6 +2,7 @@ import React from "react";
 import {Route, Link, Routes} from 'react-router-dom'
 import {Layout,Typography,Space} from "antd";
 import {Navbar,Homepage, Exchanges, CryptoCurrencies, CryptoDetails, News} from './components'
+import './App.css'
 const App = () =>{
     return (
         <div className="app">
