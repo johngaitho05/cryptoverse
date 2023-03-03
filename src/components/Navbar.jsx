@@ -4,6 +4,12 @@ import { Link } from "react-router-dom";
 import {HomeOutlined,MoneyCollectOutlined,BulbOutlined,FundOutlined,MenuOutlined} from "@ant-design/icons";
 import icon from '../images/cryptocurrency.png'
 const Navbar = ()=>{
+    const menuItems = [
+        {key: 'home', 'icon': <HomeOutlined/>, label: <Link to={'/'}>Home</Link>},
+        {key: 'cryptocurrencies', 'icon': <FundOutlined/>, label: <Link to={'/cryptocurrencies'}>Cryptocurrencies</Link>},
+        {key: 'exchanges', 'icon': <MoneyCollectOutlined/>, label: <Link to={'/exchanges'}>Exchanges</Link>},
+        {key: 'news', 'icon': <BulbOutlined/>, label: <Link to={'/news'}>News</Link>},
+    ]
     return (
         <div className="nav-container">
             <div className="logo-container">
@@ -12,21 +18,7 @@ const Navbar = ()=>{
                     <Link to="/">Cryptoverse</Link>
                 </Typography.Title>
             </div>
-            <Menu theme="dark">
-                <Menu.Item icon={<HomeOutlined/>} key="home">
-                    <Link to="/">Home</Link>
-                </Menu.Item>
-                <Menu.Item icon={<FundOutlined/>} key="cryptocurrencies">
-                    <Link to="/cryptocurrencies">Cryptocurrencies</Link>
-                </Menu.Item>
-                <Menu.Item icon={<MoneyCollectOutlined/>} key="exchanges">
-                    <Link to="/exchanges">Exchanges</Link>
-                </Menu.Item>
-                <Menu.Item icon={<BulbOutlined/>} key="news">
-                    <Link to="/news">News</Link>
-                </Menu.Item>
-            </Menu>
-
+            <Menu theme="dark" items={menuItems}/>
         </div>
     )
 }
