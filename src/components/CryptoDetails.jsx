@@ -98,14 +98,13 @@ const CryptoDetails = () => {
                 </Col>
             </Col>
             <Col className="coin-desc-link">
-                <Row className="coin-desc">
+                <Col className="coin-desc">
                     <Title level={3} className="coin-details-heading">
                         What is {cryptoDetails.name}
                     </Title>
-                    <p>{cryptoDetails.description}</p>
-                </Row>
-                <Col className="coin-links">
-                    <Title level={3} class="coin-details-heading">
+                    <p>{HTMLReactParser(cryptoDetails.description)}</p>
+                    {/*<Col className="coin-links">*/}
+                    <Title level={3} className="coin-details-heading">
                         {cryptoDetails.name} Links
                     </Title>
                     {cryptoDetails.links.map((link) => (
@@ -118,6 +117,7 @@ const CryptoDetails = () => {
                             </a>
                         </Row>
                     ))}
+                {/*</Col>*/}
                 </Col>
             </Col>
         </Col>
