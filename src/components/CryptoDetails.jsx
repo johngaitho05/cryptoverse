@@ -13,7 +13,7 @@ import {
     NumberOutlined, CheckOutlined, ThunderboltOutlined
 } from "@ant-design/icons";
 
-import {useGetCryptoDetailsQuery} from "../services/cryptoApi";
+import {useGetCryptoDetailsQuery, useGetCryptoHistoryQuery} from "../services/cryptoApi";
 import LineChart from "./LineChart";
 
 const {Title, Text} = Typography
@@ -22,6 +22,7 @@ const CryptoDetails = () => {
     const {coinId} = useParams()
     const [timePeriod, setTimePeriod] = useState('7d');
     const {data,isFetching} = useGetCryptoDetailsQuery(coinId)
+    const {data: coinHistory} = useGetCryptoHistoryQuery({coinId, timePeriod})
     const cryptoDetails = data?.data?.coin
     console.log(cryptoDetails)
 
@@ -32,7 +33,7 @@ const CryptoDetails = () => {
     const stats = [
         { title: 'Price to USD', value: `$ ${cryptoDetails?.price && millify(cryptoDetails?.price)}`, icon: <DollarCircleOutlined /> },
         { title: 'Rank', value: cryptoDetails?.rank, icon: <NumberOutlined /> },
-        { title: '24h Volume', value: `$ ${cryptoDetails?.volume && millify(cryptoDetails?.volume)}`, icon: <ThunderboltOutlined /> },
+        { title: '24h Volume', value: `$ ${cryptoDetails['24hVolume'] && millify(cryptoDetails['24hVolume'])}`, icon: <ThunderboltOutlined /> },
         { title: 'Market Cap', value: `$ ${cryptoDetails?.marketCap && millify(cryptoDetails?.marketCap)}`, icon: <DollarCircleOutlined /> },
         { title: 'All-time-high(daily avg.)', value: `$ ${cryptoDetails?.allTimeHigh?.price && millify(cryptoDetails?.allTimeHigh?.price)}`, icon: <TrophyOutlined /> },
     ];
